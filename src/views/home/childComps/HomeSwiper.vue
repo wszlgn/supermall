@@ -12,7 +12,7 @@
     </div>
 </template>
 <script>
-import { Swiper, SwiperItem } from "components/common/swiper";
+import { Swiper, SwiperItem } from "components/common/swiper/index.js";
 
 export default {
   name: 'HomeSwiper',
