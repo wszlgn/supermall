@@ -1,18 +1,6 @@
 <template>
   <div class="goods">
-    <!-- <goods-list-item v-for="item in goods" :key="item.page" :goods-item="item"/> -->
-    <ul>
-      <li>1列表</li>
-      <li>2列表</li>
-      <li>3列表</li>
-      <li>4列表</li>
-      <li>5列表</li>
-      <li>6列表</li>
-      <li>7列表</li>
-      <li>8列表</li>
-      <li>9列表</li>
-      <li>10列表</li>
-    </ul>
+    <goods-list-item v-for="item in goods" :key="item.page" :goods-item="item"/>
   </div>
 </template>
 

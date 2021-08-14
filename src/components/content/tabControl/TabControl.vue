@@ -25,6 +25,7 @@ data() {
 methods:{
   itemClick(index) {
     this.currentIndex = index;
+    this.$emit('tabClick', index);
   }
 },
 activated() {
@@ -33,8 +34,7 @@ activated() {
 },
 created(){
 },
-mounted(){
-},
+
 
 
 }
