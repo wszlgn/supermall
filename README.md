@@ -6,13 +6,13 @@ npm install
 ```
 ## 添加依赖
 npm install axios
-```
+
 npm install vue-router
-```
+
 npm install core-js
-```
+
 npm install @vue/cli@3.0.4
-```
+
 
 ### Compiles and hot-reloads for development
 ```
