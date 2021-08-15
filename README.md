@@ -2,9 +2,9 @@
 
 ## Project setup
 ```
-## 运行项目
 npm install
 ```
+## 添加依赖
 npm install axios
 ```
 npm install vue-router
