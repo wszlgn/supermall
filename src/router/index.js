@@ -24,11 +24,11 @@ const routes = [{
         component: Cart,
     },
     {
-        path: 'profile',
+        path: '/profile',
         component: Profile,
     },
     {
-        path: 'category',
+        path: '/category',
         component: Category,
     }
 

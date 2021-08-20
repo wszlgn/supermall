@@ -34,7 +34,7 @@
                      <div>购物车</div>
                 </template>
             </tab-bar-item>
-            <tab-bar-item path="profile">
+            <tab-bar-item path="/profile">
                 <template v-slot:item-icon>
                     <img  src="~assets/img/tabbar/profile.svg" alt="">
                 </template>

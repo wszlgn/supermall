@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>购物车</h2>
+       <img src="~assets/img/cart/test.png" width="320px" alt="">
     </div>
 </template>
 <script>

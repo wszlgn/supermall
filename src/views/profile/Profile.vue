@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h2>个人</h2>
+        <img src="~assets/img/profile/test.jpg" width="320px" alt="">
+        <img src="~assets/img/profile/test.jpg" width="320px" alt="">
     </div>
 </template>
 <script>
