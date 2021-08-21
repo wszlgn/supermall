@@ -1,6 +1,5 @@
 <template>
   <div id="home">
-
     <div class="wrap-nav">
     <div class="nav-height"><nav-bar class="home-nav">
       <template v-slot:center>
@@ -9,12 +8,16 @@
     </nav-bar>
     </div>
     </div>
-    <home-swiper :banners="banners" />
-    <recommend-view :recommends="recommends" />
-    <feature-view/>
-    <tab-control class="tab-control" :titles="['流行', '新品', '精选']"
-    @tabClick='tabClick' />
-    <goods-list :goods="showGoods" />
+    <scroll class="content">
+      <template v-slot:roll>
+        <home-swiper :banners="banners" />
+        <recommend-view :recommends="recommends" />
+        <feature-view/>
+        <tab-control class="tab-control" :titles="['流行', '新品', '精选']"
+        @tabClick='tabClick' />
+        <goods-list :goods="showGoods" />
+      </template>
+    </scroll>
   </div>
 </template>
 <script>
@@ -26,7 +29,7 @@ import NavBar from "components/common/navbar/NavBar.vue";
 import TabControl from  'components/content/tabControl/TabControl'
 import GoodsList from 'components/content/goods/GoodsList.vue';
 import { getHomeMultidata, getHomeGoods } from "network/home.js";
-
+import Scroll from 'components/common/scroll/Scroll.vue'
 export default {
   name: "Home",
   data() {
@@ -48,6 +51,7 @@ export default {
     FeatureView,
     TabControl,
     GoodsList,
+    Scroll,
   },
   activated() {},
   watch: {},
@@ -103,6 +107,10 @@ export default {
 }
 </script>
 <style scoped>
+#home {
+  position: relative;
+  height: 100vh;
+}
 .home-nav {
   background-color: var(--color-tint);
   color: #fff;
@@ -124,5 +132,12 @@ export default {
   top: 44px;
   z-index: 9;
 }
-
+.content {
+  overflow: hidden;
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
+  left: 0;
+  right: 0;
+}
 </style>

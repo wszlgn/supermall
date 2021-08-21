@@ -6,6 +6,7 @@
 
 <script>
   import GoodsListItem from './GoodsListItem'
+  import BScroll from 'better-scroll';
   export default {
     name: "GoodsList",
     components: {
@@ -19,9 +20,7 @@
         }
       }
     },
-mounted(){
 
-},
   }
 </script>
 

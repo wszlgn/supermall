@@ -105,7 +105,6 @@
     </div>
 </template>
 <script>
-import BScroll from 'better-scroll';
 
 export default {
    data() {
@@ -120,22 +119,14 @@ created(){
 
 },
 mounted(){
-  this.scroll = new BScroll(document.querySelector('.wrapper'), {
-  })
 },
 methods:{
+
 }
-
-
 }
 </script>
-<style>
+<style scoped>
 
-.wrapper {
-  height: 400px;
-  background-color: skyblue;
-  overflow: hidden;
 
-}
 </style>
 
