@@ -8,16 +8,21 @@
     </nav-bar>
     </div>
     </div>
-    <scroll class="content">
+    <scroll class="content" ref="scroll"
+    v-bind:probe-type="3"
+    v-bind:pull-up-load="true"
+    v-on:scroll="contentScroll"
+    v-on:pullingUp="loadMore" >
       <template v-slot:roll>
-        <home-swiper :banners="banners" />
-        <recommend-view :recommends="recommends" />
+        <home-swiper v-bind:banners="banners" />
+        <recommend-view v-bind:recommends="recommends" />
         <feature-view/>
-        <tab-control class="tab-control" :titles="['流行', '新品', '精选']"
+        <tab-control class="tab-control" v-bind:titles="['流行', '新品', '精选']"
         @tabClick='tabClick' />
-        <goods-list :goods="showGoods" />
+        <goods-list v-bind:goods="showGoods" />
       </template>
     </scroll>
+    <back-top v-on:click.native="btnClick" v-show="isShowBackTop" />
   </div>
 </template>
 <script>
@@ -28,8 +33,11 @@ import FeatureView from './childComps/featureView.vue'
 import NavBar from "components/common/navbar/NavBar.vue";
 import TabControl from  'components/content/tabControl/TabControl'
 import GoodsList from 'components/content/goods/GoodsList.vue';
-import { getHomeMultidata, getHomeGoods } from "network/home.js";
 import Scroll from 'components/common/scroll/Scroll.vue'
+import BackTop from 'components/content/backTop/BackTop.vue'
+
+import { getHomeMultidata, getHomeGoods } from "network/home.js";
+
 export default {
   name: "Home",
   data() {
@@ -42,6 +50,7 @@ export default {
         'sell': {page: 0, list: []},
       },
       currentType: 'pop',
+      isShowBackTop: false,
     };
   },
   components: {
@@ -52,9 +61,9 @@ export default {
     TabControl,
     GoodsList,
     Scroll,
+    BackTop,
   },
   activated() {},
-  watch: {},
   created() {
     // 1.请求多个数据
    this.getHomeMultidata();
@@ -66,6 +75,9 @@ export default {
    this.getHomeGoods('sell');
   },
   methods: {
+    btnClick() {
+      this.$refs.scroll.scrollTo(0, 0)
+    },
     /**
      *  事件监听相关的方法
      */
@@ -96,13 +108,23 @@ export default {
       getHomeGoods(type , page).then(res => {
         this.goods[type].list.push(...res.data.list);
         this.goods[type].page += 1;
+
+        this.$refs.scroll.finishPullUp();
   })
+    },
+    contentScroll(position) {
+      this.isShowBackTop = (-position) > 1000
+    },
+    loadMore() {
+      this.getHomeGoods (this.currentType);
+      this.$refs.scroll.scroll.refresh();
     }
   },
   computed: {
     showGoods() {
       return this.goods[this.currentType].list;
-    }
+    },
+
 }
 }
 </script>
@@ -133,11 +155,11 @@ export default {
   z-index: 9;
 }
 .content {
-  overflow: hidden;
   position: absolute;
   top: 44px;
   bottom: 49px;
   left: 0;
   right: 0;
+  overflow: hidden;
 }
 </style>
