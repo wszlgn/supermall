@@ -13,6 +13,7 @@ npm install core-js
 
 npm install @vue/cli@3.0.4
 
+npm install better-scroll
 
 ### Compiles and hot-reloads for development
 ```
